@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, Loader } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useConvexAuth } from "convex/react";
 
 
 interface PricingCardProps
@@ -15,7 +16,7 @@ interface PricingCardProps
     }
 
 const PricingCard = ({ title, subtitle, options, price } : PricingCardProps) => {
-    
+    const { isAuthenticated, isLoading } = useConvexAuth()
     const router = useRouter();
     
     const [ isSubmitting, setIsSubmitting ] = useState(false);
